@@ -6,7 +6,7 @@ const settings = require ("./config/bot.json") // The bot connects using the con
 
 const { Player } = require("discord-player"); // Create a new Player (Youtube API key is your Youtube Data v3 key)
 
-const player = new Player(client, settings.youtube_api); // To easily access the player
+const player = new Player(client, process.env.youtube_api); // To easily access the player
 
 client.player = player;
 
@@ -16,11 +16,11 @@ client.on("ready", () => {
 
 });
 
-client.login(settings.token_bot); //The bot connects thanks to the token
+client.login(process.env.token_bot); //The bot connects thanks to the token
 
 client.on('message', async (message) => {
 
-    const prefix = settings.prefix;
+    const prefix = process.env.prefix;
         
     const messageArray = message.content.split(" ");
     const cmd = messageArray[0].toLowerCase();
